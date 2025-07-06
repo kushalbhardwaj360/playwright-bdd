@@ -19,10 +19,10 @@ export class LoginPage {
   async loginCredentials(username: string, password: string) {
     const userName = this.page.locator("input[name='email']")
     const passWord = this.page.locator("input[name='password']")
-    await expect(userName).toBeVisible();
-    await userName.fill(username);
-    await expect(passWord).toBeVisible();
-    await passWord.fill(password);
+    await expect(userName).toBeVisible()
+    await userName.fill(username)
+    await expect(passWord).toBeVisible()
+    await passWord.fill(password)
   }
 
   async loginClick() {
