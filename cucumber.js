@@ -10,6 +10,6 @@ module.exports = {
     parallel: 0,
     publishQuiet: true,
     requireModule: ['ts-node/register'],
-    tags: ''
+    tags: '@login'
   }
 };
