@@ -1,7 +1,7 @@
 import { Given, When, Then } from "@cucumber/cucumber"
 
          Given('The user is on the hompage', async function () {
-              await this.loginPage.goto();
+              await this.homePage.goToHomePage()
          });
        
          When('the user clicks on Login button', async function () {

@@ -4,11 +4,6 @@ import { expect } from "@playwright/test"
 export class LoginPage {
   constructor(private page: Page) {}
 
-  async goto() {
-    await this.page.goto('https://ecommerce-playground.lambdatest.io/')
-    await expect(this.page.locator("body[class='common-home']")).toBeVisible()
-  }
-
   async loginBtnClick() {
     await this.page.hover("//a[@data-toggle='dropdown']//span[contains(.,'My account')]")
     const loginButton = this.page.locator('text=Login')
