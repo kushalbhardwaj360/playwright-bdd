@@ -5,7 +5,7 @@ This repository contains UI automation tests for a web application using [Playwr
 ## Tech Stack
 
 - [Playwright](https://playwright.dev/)
-- TypeScript
+- [TypeScript](https://www.typescriptlang.org/)
 - Node.js
 - Cucumber
   
