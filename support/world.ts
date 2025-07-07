@@ -1,5 +1,5 @@
 import { setWorldConstructor, World, IWorldOptions } from '@cucumber/cucumber'
-import { Browser, Page, chromium } from 'playwright'
+import { Browser, BrowserContext, Page, chromium, firefox, webkit } from 'playwright'
 import { LoginPage } from '../pages/LoginPage'
 import { MyAccount } from '../pages/MyAccount'
 import { HomePage } from '../pages/HomePage'
@@ -7,7 +7,9 @@ import { Registration } from '../pages/Registration'
 
 export class CustomWorld extends World {
   browser?: Browser
+  context?: BrowserContext
   page?: Page
+  browserType = process.env.BROWSER || 'Chromium'
   private _loginPage?: LoginPage
   private _myAccount?: MyAccount
   private _homePage?: HomePage
@@ -18,15 +20,26 @@ export class CustomWorld extends World {
   }
 
   async openBrowser() {
-      this.browser = await chromium.launch({
-      headless: false
-    })
-    const context = await this.browser.newContext({
+      if (this.browserType === 'chromium') {
+      this.browser = await chromium.launch(
+        { headless: false }
+      )
+    } else if (this.browserType === 'firefox') {
+      this.browser = await firefox.launch(
+        { headless: false }
+      )
+    } else if (this.browserType === 'webkit') {
+      this.browser = await webkit.launch(
+        { headless: false }
+      )
+    }
+    const context = await this.browser?.newContext({
       recordVideo: {
         dir: 'reports/videos/'
-      }
+      },
     })
-    this.page = await context.newPage()
+    this.context = context
+    this.page = await context?.newPage()
   }
 
   async closeBrowser() {

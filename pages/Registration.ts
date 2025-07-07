@@ -53,6 +53,6 @@ export class Registration {
   }
 
   async registrationValidation() {
-  await expect(this.page.locator('h1.page-title')).toHaveText(' Your Account Has Been Created!');
+    await expect(this.page.locator('h1.page-title')).toHaveText(' Your Account Has Been Created!');
   }
 }

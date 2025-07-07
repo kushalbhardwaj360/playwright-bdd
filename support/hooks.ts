@@ -2,7 +2,7 @@ import { Before, After } from '@cucumber/cucumber';
 import { CustomWorld } from './world';
 import fs from 'fs';
 
-After(async function (this: CustomWorld, scenario) {
+After({ timeout: 20000 }, async function (this: CustomWorld, scenario) {
   if (scenario.result?.status === 'FAILED' && this.page) {
     const screenshotPath = `reports/screenshots/${scenario.pickle.name.replace(/[^a-z0-9]/gi, '_')}.png`;
     await this.page.screenshot({ path: screenshotPath, fullPage: true });
@@ -23,6 +23,6 @@ After(async function (this: CustomWorld, scenario) {
   await this.closeBrowser();
 });
 
-Before(async function (this: CustomWorld) {
+Before({ timeout: 20000 }, async function (this: CustomWorld) {
   await this.openBrowser();
 });
