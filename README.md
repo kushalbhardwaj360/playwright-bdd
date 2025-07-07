@@ -16,7 +16,7 @@ This repository contains UI automation tests for a web application using [Playwr
 ### 1. Clone the repository
 
 ```bash
-git clone [https://github.com/your-username/your-repo-name.git](https://github.com/kushalbhardwaj360/playwright-bdd.git)
+git clone https://github.com/kushalbhardwaj360/playwright-bdd.git
 cd playwright-bdd
 
 ### 2. Install the dependencies
